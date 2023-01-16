@@ -26,6 +26,7 @@ class Transaction(models.Model):
     price = models.DecimalField(_('price'),max_digits=20, decimal_places=2,default=0.0)
     variant = models.CharField(_('variant'),max_length=255,blank=True,null=True)
     payment_mode = models.CharField(_('payment_mode'),max_length=255,blank=True,null=True)
+    tracking_id = models.CharField(_('tracking_id'),max_length=255,blank=True,null=True)
     color = models.CharField(_('color'),max_length=255,blank=True,null=True)
     status = models.CharField(_('status'),max_length=255,blank=True,null=True)
     date_from=models.DateTimeField(_('date_from'), null=False,blank=False,default=timezone.now)

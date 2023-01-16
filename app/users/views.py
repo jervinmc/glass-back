@@ -121,3 +121,14 @@ class GetUserView(generics.GenericAPIView):
 
 def id_generator(size=8, chars=string.ascii_uppercase + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
+
+
+
+class FindEmail(generics.GenericAPIView):
+    permission_classes = (permissions.AllowAny, )
+    def post(self,request):
+        res = request.data
+        items = User.objects.filter(email=res.get('email'))
+        items = GetUserSerializer(items,many=True)
+        print(items.data)
+        return Response(status=status.HTTP_200_OK,data=items.data)

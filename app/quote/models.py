@@ -19,15 +19,11 @@ def nameFile(instance, filename):
     return 'uploads/{filename}'.format(filename=filename)
 
 
-class Product(models.Model):
-    request_id=models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
-    quantity = models.IntegerField(_('quantity'),default=0.0)
-    price = models.DecimalField(_('price'),max_digits=20, decimal_places=2,default=0.0)
+class Quote(models.Model):
+    fullname=models.CharField(_('fullname'),max_length=255,blank=True,null=True)
+    message=models.CharField(_('message'),max_length=255,blank=True,null=True)
     product_name=models.CharField(_('product_name'),max_length=255,blank=True,null=True)
-    description=models.CharField(_('description'),max_length=255,blank=True,null=True)
-    category=models.CharField(_('category'),max_length=255,blank=True,null=True)
-    status=models.CharField(_('status'),max_length=255,blank=True,null=True)
-    image = models.ImageField(
-        _('image'), upload_to=nameFile, default="uploads/users_placeholder.png")
+    contact_number=models.CharField(_('contact_number'),max_length=255,blank=True,null=True)
+    date_created=models.DateTimeField(_('date_created'), null=False,blank=False,default=timezone.now)
     class Meta:
         ordering = ["-id"]

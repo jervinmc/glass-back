@@ -29,6 +29,10 @@ class TransactionView(viewsets.ModelViewSet):
             if(len(p_item.data)!=0):
                 x['product_name'] = p_item.data[0]['product_name']
                 x['image'] = p_item.data[0]['image']
+            u_item = User.objects.filter(id=x['user_id'])
+            u_item = GetUserSerializer(u_item,many=True)
+            if(len(u_item.data)!=0):
+                x['users'] = u_item.data[0]
         return Response(data=item.data)
 
 
