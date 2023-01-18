@@ -75,7 +75,7 @@ class ResetPassword(generics.GenericAPIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         message = get_template('mail.html').render({"password":password})
-        msg = EmailMultiAlternatives('OTP', message,'bitbobms@gmail.com', [res.get('email')])
+        msg = EmailMultiAlternatives('Forgot Password', message,'bitbobms@gmail.com', [res.get('email')])
         html_content = f'<p></p>'
         msg.content_subtype = "html"
         msg.send()
@@ -86,7 +86,7 @@ class QuoteRequest(generics.GenericAPIView):
     def post(self,request):
         res = request.data
         message = get_template('mail.html').render({"fullname":res.get('fullname'),"message":res.get('message'),"contact_number":res.get('contact_number'),"product_name":res.get('product_name')})
-        msg = EmailMultiAlternatives('OTP', message,'rrglassandaluminum00@gmail.com', ['rrglassandaluminum00@gmail.com','fanepob312@octovie.com'])
+        msg = EmailMultiAlternatives('Quote', message,'rrglassandaluminum00@gmail.com', ['rrglassandaluminum00@gmail.com','fanepob312@octovie.com'])
         html_content = f'<p></p>'
         msg.content_subtype = "html"
         msg.send()
