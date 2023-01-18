@@ -21,6 +21,7 @@ def nameFile(instance, filename):
 
 class Quote(models.Model):
     fullname=models.CharField(_('fullname'),max_length=255,blank=True,null=True)
+    user_id = models.IntegerField(_('user_id'),default=0.0)
     message=models.CharField(_('message'),max_length=255,blank=True,null=True)
     product_name=models.CharField(_('product_name'),max_length=255,blank=True,null=True)
     contact_number=models.CharField(_('contact_number'),max_length=255,blank=True,null=True)
