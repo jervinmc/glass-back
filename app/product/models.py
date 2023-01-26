@@ -29,5 +29,13 @@ class Product(models.Model):
     status=models.CharField(_('status'),max_length=255,blank=True,null=True)
     image = models.ImageField(
         _('image'), upload_to=nameFile, default="uploads/users_placeholder.png")
+    image1 = models.ImageField(
+        _('image1'), upload_to=nameFile, default="uploads/users_placeholder.png")
+    image2 = models.ImageField(
+        _('image2'), upload_to=nameFile, default="uploads/users_placeholder.png")
+    image3 = models.ImageField(
+        _('image3'), upload_to=nameFile, default="uploads/users_placeholder.png")
+    image4 = models.ImageField(
+        _('image4'), upload_to=nameFile, default="uploads/users_placeholder.png")
     class Meta:
         ordering = ["-id"]

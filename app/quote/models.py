@@ -25,6 +25,10 @@ class Quote(models.Model):
     message=models.CharField(_('message'),max_length=255,blank=True,null=True)
     product_name=models.CharField(_('product_name'),max_length=255,blank=True,null=True)
     contact_number=models.CharField(_('contact_number'),max_length=255,blank=True,null=True)
+    status=models.CharField(_('status'),max_length=255,blank=True,null=True)
+    price = models.DecimalField(_('price'),max_digits=20, decimal_places=2,default=0.0)
     date_created=models.DateTimeField(_('date_created'), null=False,blank=False,default=timezone.now)
+    image = models.ImageField(
+        _('image'), upload_to=nameFile, default="uploads/users_placeholder.png")
     class Meta:
         ordering = ["-id"]
