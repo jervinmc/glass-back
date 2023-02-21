@@ -13,6 +13,13 @@ from cart.models import Cart
 from product.views import Product
 from product.serializers import ProductSerializer
 from decouple import config
+pusher_client = pusher.Pusher(
+  app_id=config('pusher_id'),
+  key=config('pusher_key'),
+  secret=config('secret_key'),
+  cluster='ap1',
+  ssl=True
+)
 class TransactionView(viewsets.ModelViewSet):
     filter_backends = [filters.SearchFilter]
     search_fields = ['location']
@@ -37,6 +44,13 @@ class TransactionView(viewsets.ModelViewSet):
 
 
 
+
+class Notify(generics.GenericAPIView):
+    permission_classes=[permissions.AllowAny]
+    def post(self,request):
+        res = request.data
+        pusher_client.trigger('notif', 'my-test', {'message': res.get('user_id'),'title': res.get('title')})
+        return Response()
 
 class ProductGetByUser(generics.GenericAPIView):
     permission_classes = (permissions.AllowAny, )

@@ -31,7 +31,9 @@ class QuoteView(viewsets.ModelViewSet):
         html_content = f'<p></p>'
         msg.content_subtype = "html"
         msg.send()
-        return Response(data=[])
+        print(ser.data)
+        return Response(data=ser.data)
+
 
 
 class Inquiry(generics.GenericAPIView):

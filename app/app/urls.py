@@ -6,7 +6,7 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from users.views import Login,GetUserView,Signup,ResetPassword,QuoteRequest,FindEmail
 from size.views import SizeByProduct
-from transaction.views import BulkTransact
+from transaction.views import BulkTransact,Notify
 from quote.views import Inquiry
 from rest_framework import permissions
 from rest_framework_simplejwt.views import (
@@ -24,6 +24,8 @@ path('api/v1/admin/', admin.site.urls),
     path('api/v1/auth/user/', GetUserView.as_view(), 
     name='auth_data'),
     path('api/v1/findemail/', FindEmail.as_view(), 
+    name='auth_data'),
+     path('api/v1/notif/', Notify.as_view(), 
     name='auth_data'),
     
     path('api/v1/login/', Login.as_view(), name='token_refresh'),
