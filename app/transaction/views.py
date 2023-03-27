@@ -49,7 +49,7 @@ class Notify(generics.GenericAPIView):
     permission_classes=[permissions.AllowAny]
     def post(self,request):
         res = request.data
-        pusher_client.trigger('notif', 'my-test', {'message': res.get('user_id'),'title': res.get('title')})
+        pusher_client.trigger('notif', 'my-test', {'message': res.get('user_id'),'title': res.get('title'),'status': res.get('status')})
         return Response()
 
 class ProductGetByUser(generics.GenericAPIView):
